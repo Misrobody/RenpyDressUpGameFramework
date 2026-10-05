@@ -10,11 +10,11 @@ The image assets are loaded directly from image folder. After creating or modify
 
 # Asset Credit
 
-[Better Colorize for Ren'py](https://feniksdev.itch.io/better-colorize-for-renpy)
-[Color Picker for Ren'py](https://feniksdev.itch.io/color-picker-for-renpy)
-[Shugo Chara Eggs](https://ko-fi.com/s/73209cb5d1)
+[Better Colorize for Ren'py](https://feniksdev.itch.io/better-colorize-for-renpy) (Feniksdev)
 
--# I think that's all, for now
+[Color Picker for Ren'py](https://feniksdev.itch.io/color-picker-for-renpy) (Feniksdev)
+
+[Shugo Chara Eggs](https://ko-fi.com/s/73209cb5d1) (Meowsclemilk)
 
 ---
 
