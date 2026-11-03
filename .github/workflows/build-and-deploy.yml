@@ -44,7 +44,10 @@ jobs:
           
           # Setup some export more vars by getting data from the game's options.rpy
           #$(python3 renpy_export_project_defines_to_cli.py ${{ github.event.repository.name }} )
-          $(python3 ../renpy_export_project_defines_to_cli.py ${{ github.event.repository.name }} )
+          #$(python3 ../renpy_export_project_defines_to_cli.py ${{ github.event.repository.name }} )
+          export RENPY_PROJECT_BUILD_NAME=RenpyDressUpGameFramework
+          export RENPY_PROJECT_CONFIG_VERSION=2.0
+
           
           # output versions
           echo "project name: ${RENPY_PROJECT_BUILD_NAME}"
