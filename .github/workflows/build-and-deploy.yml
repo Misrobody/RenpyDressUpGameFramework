@@ -9,18 +9,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/bunnygungames/renpy-itch:latest
+    #container: ghcr.io/bunnygungames/renpy-itch:latest
     steps:
       - uses: actions/checkout@v3
+      - name: Download Ren'Py 8.5.3
+        run: |
+          wget https://www.renpy.org/dl/8.5.3/renpy-8.5.3-sdk.tar.bz2
+          tar -xjf renpy-8.5.3-sdk.tar.bz2
+      - name: Install Butler
+        run: |
+          curl -L https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default -o butler.zip
+          unzip butler.zip
+          chmod +x butler
+          sudo mv butler /usr/local/bin/
       - name: Build
         run: |
           #!/usr/bin/env bash
           
           # Copy the repo into the SDK folder
-          cp -R /__w/*/* /renpy-*/
+          #cp -R /__w/*/* /renpy-*/
+          cp -R ${GITHUB_WORKSPACE}/* renpy-8.5.3-sdk/
           
           # enter renpy dir
-          cd /renpy-*/
+          #cd /renpy-*/
+          cd renpy-8.5.3-sdk
         
           # # Set permission to avoid security issues.
           # chmod -R +x .
