@@ -35,11 +35,15 @@ jobs:
           # Copy the repo into the SDK folder
           #cp -R /__w/*/* /renpy-*/
           #cp -R ${GITHUB_WORKSPACE}/* renpy-8.5.3-sdk/
-          rsync -av --exclude='renpy-8.5.3-sdk' ${GITHUB_WORKSPACE}/ renpy-8.5.3-sdk/
+          #rsync -av --exclude='renpy-8.5.3-sdk' ${GITHUB_WORKSPACE}/ renpy-8.5.3-sdk/
+
+          cp -R ${GITHUB_WORKSPACE}/RenpyDressUpGameFramework renpy/
           
           # enter renpy dir
           #cd /renpy-*/
-          cd renpy-8.5.3-sdk
+          #cd renpy-8.5.3-sdk
+
+          cd renpy
         
           # # Set permission to avoid security issues.
           # chmod -R +x .
