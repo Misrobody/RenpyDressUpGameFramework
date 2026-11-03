@@ -321,71 +321,60 @@ style navigation_button_text:
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
 screen main_menu():
-    $ tsize = 50
-    $ pdd = 20
-    $ c = gui.hover_color
-
     tag menu
 
-    add "bgim"
+    style_prefix "main_menu"
 
-    add "logo.png":
-        zoom .5
-        xalign .5
+    add "gui/main_menu.png"
 
-    hbox:
-        spacing 10 align(.5, .8)
-        button:
-            frame at hover_effect_main:
-                padding (pdd, pdd, pdd, pdd)
-                text "Start" size tsize hover_color c
+    vbox:
+        text "[config.name!t]":
+            style "main_menu_title"
+
+        text "[config.version]":
+            style "main_menu_version"
+
+    hbox:         
+        button at hover_effect_main:
+            text "Start"
             action Start()
 
-        button:
-            frame at hover_effect_main:
-                padding (pdd, pdd, pdd, pdd)
-                text "Preferences" size tsize hover_color c
+        button at hover_effect_main:
+            text "Preferences"
             action ShowMenu("preferences")
 
-        button:
-            frame at hover_effect_main:
-                padding (pdd, pdd, pdd, pdd)
-                text "About" size tsize hover_color c
+        button at hover_effect_main:
+            text "About"
             action ShowMenu("about")
 
-        button:
-            frame at hover_effect_main:
-                padding (pdd, pdd, pdd, pdd)
-                text "Quit" size tsize hover_color c
+        button at hover_effect_main:
+            text "Quit"
             action Quit(confirm=False)
 
-style main_menu_frame is empty
-style main_menu_vbox is vbox
-style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
-
-style main_menu_frame:
-    xsize 420
-    yfill True
-
-    background "gui/overlay/main_menu.png"
-
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
 
 style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
+    size 50
+    hover_color gui.hover_color
+
+style main_menu_button:
+    background "gui_bg"
+    padding (20, 20, 20, 20)
+
+style main_menu_hbox:
+    spacing 10
+    align(.5, .55)
+
+style main_menu_vbox:
+    xalign 0.5
+    yalign 0.35
 
 style main_menu_title:
     properties gui.text_properties("title")
+    xalign 0.5
 
 style main_menu_version:
     properties gui.text_properties("version")
+    xalign 0.5
 
 
 ## Game Menu screen ############################################################
@@ -398,16 +387,11 @@ style main_menu_version:
 ## transcluded (placed) inside it.
 
 screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-    $ val = 30
-    $ val2 = 30
     style_prefix "game_menu"
 
-    add "bgim"
+    add "gui/game_menu.png"
 
     frame:
-        align(.5, .5)
-        margin(val, val+130, val, val+50)
-        padding(val2, val2, val2, val2)
         if scroll == "viewport":
             viewport:
                 yinitial yinitial
@@ -434,49 +418,26 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
         else:
             transclude
 
-    button:
-        align(.14, .9)
-        frame:
-            padding(10, 10, 10, 10)
-            text ("Return")
-            at hover_effect_main
+    button at hover_effect_main:
+        style "game_menu_return"
+        text ("Return") 
         action Return()
         
-    label title:
-        xalign .5
-        text_color "#000000"
+    label title
 
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
 
 
-style game_menu_outer_frame is empty
-style game_menu_navigation_frame is empty
-style game_menu_content_frame is empty
-style game_menu_viewport is gui_viewport
-style game_menu_side is gui_side
-style game_menu_scrollbar is gui_vscrollbar
+style game_menu_frame:
+    align(.5, .5)
+    margin(30, 160, 30, 80)
+    padding(30, 30, 30, 30)
 
-style game_menu_label is gui_label
-style game_menu_label_text is gui_label_text
-
-style return_button is navigation_button
-style return_button_text is navigation_button_text
-
-style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
-
-    background "gui/overlay/game_menu.png"
-
-style game_menu_navigation_frame:
-    xsize 420
-    yfill True
-
-style game_menu_content_frame:
-    left_margin 60
-    right_margin 30
-    top_margin 15
+style game_menu_return:
+    background "gui_bg"
+    align(.14, .9)
+    padding(10, 10, 10, 10)
 
 style game_menu_viewport:
     xsize 1380
@@ -484,22 +445,15 @@ style game_menu_viewport:
 style game_menu_vscrollbar:
     unscrollable gui.unscrollable
 
-style game_menu_side:
-    spacing 15
-
 style game_menu_label:
-    xpos 75
     ysize 180
+    xalign .5
+    color "#000000"
 
 style game_menu_label_text:
     size gui.title_text_size
     color gui.accent_color
     yalign 0.5
-
-style return_button:
-    xpos gui.navigation_xpos
-    yalign 1.0
-    yoffset -45
 
 
 ## About screen ################################################################

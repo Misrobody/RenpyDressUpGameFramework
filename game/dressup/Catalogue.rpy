@@ -83,7 +83,7 @@ init python:
         cats = {}
         subs = {}
         maps = defaultdict(list)
-        for root, dirs, files in os.walk(renpy.loader.transfn("images/doll/")):
+        for root, dirs, files in os.walk(os.path.join(config.gamedir, "images", "doll")):
             for dirname in dirs:
                 infos = dirname.split(" - ")
                 if infos[1] not in subs:

@@ -30,6 +30,8 @@ init python:
         xysize=(doll_width, doll_height)
     )
 
+    CROP_SIZE = 200
+
 
     ################################################################################
     # Category

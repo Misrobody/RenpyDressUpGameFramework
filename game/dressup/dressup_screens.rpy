@@ -173,17 +173,22 @@ screen color_menu_list(cm):
     frame:
         grid COLOR_LIST_GRID_COLUMNS COLOR_LIST_GRID_ROWS:             
             for c in colors:
-                button:    
-                    background Solid(c)
-                    #if c == cm.cur_color_value() #at outline(color="#ff0000", width=10)
+                button: 
+                    add Solid(c)
                     action Function(cm.set_color, c, channel) 
-                    at hover_effect_color
+                        
+                    if c == cm.cur_color_value():
+                        at selected_effect
+                    else:
+                        at hover_effect_color
 
 style color_list_grid:
     spacing COLOR_LIST_SPACING  
 
 style color_list_button:
     xysize (COLOR_LIST_BUTTON_WIDTH, COLOR_LIST_BUTTON_WIDTH)
+    background "gui_bg"
+    padding(3, 3, 3, 3)
 
 style color_list_frame:
     background None
@@ -208,7 +213,7 @@ style color_menu_toggle_button:
     xysize (COLOR_MENU_TOGGLE_WIDTH, COLOR_MENU_TOGGLE_HEIGHT) 
 
 
-## Color Menu Toggle ###########################################################
+## Color Menu Swatch ###########################################################
 
 screen color_menu_swatch(cm):
     style_prefix "color_swatch"
@@ -220,6 +225,7 @@ screen color_menu_swatch(cm):
 
 style color_swatch_frame:
     align(.5, .5)
+    padding(2, 2, 2, 2)
     margin(
         COLOR_SWATCH_MARGIN,
         COLOR_SWATCH_MARGIN,
@@ -449,7 +455,7 @@ screen control_panel():
 ## and color selection changes.
 
 screen outfits_ui():
-    add "bgim"
+    add "dressup_background"
     hbox spacing (config.screen_width - doll_width - ITEM_GRID_VIEWPORT_WIDTH)//2 :   
         use doll_panel()
         use control_panel()

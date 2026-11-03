@@ -5,19 +5,14 @@
 image gui_bg = Frame("gui/frame.png", 10, 10) 
 
 transform top_menu_color:
-    matrixcolor TintMatrix("#ffafd2")
+    matrixcolor TintMatrix("#ffffff")
 
 image top_menu_bg:
     Frame("gui/frame.png", 10, 10)
-
     top_menu_color
 
-image bgim:
-    "bg.jpg"
-    xzoom 1.5
-    yzoom 0.6*1.5
-    xtile 3
-    ytile 3
+image dressup_background = Solid("#dadada")
+
 
 ################################################################################
 # Transform definitions
@@ -31,15 +26,15 @@ transform hover_effect_clothes:
 
 transform hover_effect_groups:
     on hover:
-        matrixcolor TintMatrix("#ff7eab")
+        matrixcolor TintMatrix("#e6e6e6")
     on idle:
-        matrixcolor TintMatrix("#fc4d8e")
+        matrixcolor TintMatrix("#ffffff")
 
 transform hover_effect_category:
     on hover:
-        matrixcolor TintMatrix("#fde4ed")
+        matrixcolor TintMatrix("#bbbbbb")
     on idle:
-        matrixcolor TintMatrix("#ffafd2")
+        matrixcolor TintMatrix("#d4d4d4")
 
 transform hover_effect_color:
     on hover:
@@ -58,9 +53,3 @@ transform selected_effect:
         matrixcolor TintMatrix("#fffaba")  
     on idle:
         matrixcolor TintMatrix("#fff34d")
-
-transform selected_effect_color:
-    on hover:
-        matrixcolor TintMatrix("#f30000d3")  
-    on idle:
-        matrixcolor TintMatrix("#800000e5")
