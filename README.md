@@ -1,4 +1,4 @@
-# Dress-Up Framework
+<img width="4032" height="882" alt="image" src="https://github.com/user-attachments/assets/4a44fe7d-deca-42fa-8eaa-bed9560f229c" /># Dress-Up Framework
 
 A modular plug-and-play character creator and dress-up framework for Ren'Py, compatible with both web and desktop builds.
 
@@ -9,23 +9,15 @@ Assets are loaded directly from the image set. After creating or modifying asset
   <img src="screenshots/screenshot0004.png" width=500>
 </div>
 
-## Asset Credits
-
-- [Better Colorize for Ren'Py](https://feniksdev.itch.io/better-colorize-for-renpy) by Feniksdev
-- [Color Picker for Ren'Py](https://feniksdev.itch.io/color-picker-for-renpy) by Feniksdev
-- [Demo Character Assets](https://bigeishe.itch.io/shugo-chara-dress-up) by Bigeishe
-
----
-
 ## Quick Start
 
 ### 1. Install the Framework
 
-Copy the framework files into your Ren'Py project.
+Copy the framework files (The `RenpyDressUpGameFramework` directory) into your Ren'Py SDK project. The framework itself is packaged inside a game project.
 
 ### 2. Create an Image Set
 
-Create an `images/doll` directory and add your assets using the folder and naming conventions described in the Asset Structure section below.
+Replace the images inside the `images/doll` directory with your own assets using the naming conventions described in the Asset Structure section below.
 
 ### 3. Generate Metadata
 
@@ -35,13 +27,28 @@ Run:
 python generate_metadata.py images/doll
 ```
 
-This generates `doll_data.json` and all metadata required by the framework.
+This generates `doll_data.json` and all metadata required by the framework for your assets.
 
 ### 4. Launch the Project
 
 Start your Ren'Py project. The framework will automatically discover available groups, categories, items, and thumbnail data.
 
----
+## Requirements
+
+- Ren'Py 8.5.3 (development and test target)
+- Python 3.x (metadata generation)
+
+The framework can be copied directly into a project created with the Ren'Py 8.5.3 SDK. Other versions may work but are untested.
+
+## Dependencies
+
+The metadata generator requires Pillow:
+
+```bash
+pip install pillow
+```
+
+The runtime framework itself has no additional Python dependencies beyond Ren'Py.
 
 ## How It Works
 
@@ -55,7 +62,7 @@ The metadata generator:
 - Counts available items.
 - Creates `doll_data.json`.
 
-No manual metadata editing is required.
+The generated metadata is stored in `doll_data.json` at the root of the image set.
 
 ## Asset Structure
 
@@ -146,19 +153,14 @@ Hair
 ## Image Requirements
 
 - PNG only.
-- Thumbnail generation uses visible pixels only.
 - Assets are automatically resized by the generator.
-- Optimizing source images is recommended for web builds.
+- Optimized source images are recommended for web builds.
 
-## Metadata File
+## Asset Credits
 
-The generator creates a single metadata file:
-
-```text
-doll_data.json
-```
-
-inside the root of the image set directory.
+- [Better Colorize for Ren'Py](https://feniksdev.itch.io/better-colorize-for-renpy) by Feniksdev
+- [Color Picker for Ren'Py](https://feniksdev.itch.io/color-picker-for-renpy) by Feniksdev
+- [Demo Character Assets](https://bigeishe.itch.io/shugo-chara-dress-up) by Bigeishe
 
 ## License
 
