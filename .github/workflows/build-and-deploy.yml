@@ -18,10 +18,11 @@ jobs:
           tar -xjf renpy-8.5.3-sdk.tar.bz2
       - name: Install Butler
         run: |
-          curl -L https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default -o butler.zip
+          wget https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default -O butler.zip
           unzip butler.zip
           chmod +x butler
           sudo mv butler /usr/local/bin/
+          butler --version
       - name: Build
         run: |
           #!/usr/bin/env bash
