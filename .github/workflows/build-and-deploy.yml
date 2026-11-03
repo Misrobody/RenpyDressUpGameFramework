@@ -43,7 +43,8 @@ jobs:
           export butler_user_slash_game="${{ secrets.BUTLER_USER_SLASH_GAME }}"          
           
           # Setup some export more vars by getting data from the game's options.rpy
-          $(python3 renpy_export_project_defines_to_cli.py ${{ github.event.repository.name }} )
+          #$(python3 renpy_export_project_defines_to_cli.py ${{ github.event.repository.name }} )
+          $(python3 ../renpy_export_project_defines_to_cli.py ${{ github.event.repository.name }} )
           
           # output versions
           echo "project name: ${RENPY_PROJECT_BUILD_NAME}"
