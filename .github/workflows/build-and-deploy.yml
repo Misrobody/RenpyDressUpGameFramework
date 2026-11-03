@@ -30,20 +30,24 @@ jobs:
           butler --version
       - name: Build
         run: |
-          #!/usr/bin/env bash
-          
+          #!/usr/bin/env bash          
           # Copy the repo into the SDK folder
           #cp -R /__w/*/* /renpy-*/
           #cp -R ${GITHUB_WORKSPACE}/* renpy-8.5.3-sdk/
           #rsync -av --exclude='renpy-8.5.3-sdk' ${GITHUB_WORKSPACE}/ renpy-8.5.3-sdk/
-
-          #cp -R ${GITHUB_WORKSPACE}/RenpyDressUpGameFramework renpy/
-          
+          #cp -R ${GITHUB_WORKSPACE}/RenpyDressUpGameFramework renpy/          
           # enter renpy dir
           #cd /renpy-*/
           #cd renpy-8.5.3-sdk
+          #cd renpy
 
-          cd renpy
+          cp -a renpy renpy_local
+          chmod -R u+w renpy_local
+          
+          # Enter writable SDK
+          cd renpy_local
+          pwd
+          ls -la ..
         
           # # Set permission to avoid security issues.
           # chmod -R +x .
