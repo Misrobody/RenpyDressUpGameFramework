@@ -100,9 +100,13 @@ jobs:
           export build_file_name=${RENPY_PROJECT_BUILD_NAME}-${RENPY_PROJECT_CONFIG_VERSION}
           
           # Push to itch for various build types.
+
+          butler push *-win.zip ${butler_user_slash_game}:windows-${GITHUB_REF_NAME}
+          butler push *-pc.zip ${butler_user_slash_game}:linux-${GITHUB_REF_NAME}
+          butler push *-mac.zip ${butler_user_slash_game}:mac-${GITHUB_REF_NAME}
           
-          butler push ${build_file_name}-win.zip ${butler_user_slash_game}:windows-${GITHUB_REF_NAME}
-          butler push ${build_file_name}-linux.tar.bz2 ${butler_user_slash_game}:linux-${GITHUB_REF_NAME}
-          butler push ${build_file_name}-mac.zip ${butler_user_slash_game}:mac-${GITHUB_REF_NAME}
+          #butler push ${build_file_name}-win.zip ${butler_user_slash_game}:windows-${GITHUB_REF_NAME}
+          #butler push ${build_file_name}-linux.tar.bz2 ${butler_user_slash_game}:linux-${GITHUB_REF_NAME}
+          #butler push ${build_file_name}-mac.zip ${butler_user_slash_game}:mac-${GITHUB_REF_NAME}
           
           
