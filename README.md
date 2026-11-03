@@ -8,24 +8,47 @@ Assets are loaded directly from the image set. After creating or modifying asset
 
 - [Better Colorize for Ren'Py](https://feniksdev.itch.io/better-colorize-for-renpy) by Feniksdev
 - [Color Picker for Ren'Py](https://feniksdev.itch.io/color-picker-for-renpy) by Feniksdev
+- [Demo Character Assets](https://bigeishe.itch.io/shugo-chara-dress-up) by Bigeishe
 
-## How It Works
+---
 
-The framework automatically discovers clothes, hairstyles, facial features, accessories, and other doll layers from a structured image set.
+## Quick Start
 
-After updating your assets, run:
+### 1. Install the Framework
+
+Copy the framework files into your Ren'Py project.
+
+### 2. Create an Image Set
+
+Create an `images/doll` directory and add your assets using the folder and naming conventions described in the Asset Structure section below.
+
+### 3. Generate Metadata
+
+Run:
 
 ```bash
 python generate_metadata.py images/doll
 ```
 
-The generator will:
+This generates `doll_data.json` and all metadata required by the framework.
 
-- Resize assets to the framework resolution.
-- Detect doll dimensions.
-- Generate thumbnail crop data.
-- Count available items.
-- Create `doll_data.json`.
+### 4. Launch the Project
+
+Start your Ren'Py project. The framework will automatically discover available groups, categories, items, and thumbnail data.
+
+---
+
+## How It Works
+
+The framework automatically discovers clothes, hairstyles, facial features, accessories, and other doll layers from a structured image set.
+
+The metadata generator:
+
+- Resizes assets to the framework resolution.
+- Detects doll dimensions.
+- Generates thumbnail crop data.
+- Counts available items.
+- Creates `doll_data.json`.
 
 No manual metadata editing is required.
 
@@ -131,3 +154,13 @@ doll_data.json
 ```
 
 inside the root of the image set directory.
+
+## License
+
+This project is licensed under the Apache License 2.0.
+
+You are free to use, modify, and distribute this software in accordance with the terms of the license.
+
+See the [LICENSE](LICENSE) file for the full license text, or visit the official Apache License page:
+
+- https://www.apache.org/licenses/LICENSE-2.0
