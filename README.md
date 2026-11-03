@@ -12,8 +12,6 @@ The image assets are loaded directly from the image folder. After creating or mo
 
 [Color Picker for Ren'py](https://feniksdev.itch.io/color-picker-for-renpy) (Feniksdev)
 
-[Shugo Chara Eggs](https://ko-fi.com/s/73209cb5d1) (Meowsclemilk)
-
 ---
 
 # How It Works
