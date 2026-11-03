@@ -1,0 +1,26 @@
+# Directories that Ren'Py changes files in.
+/RenpyDressUpGameFramework/game/saves
+/RenpyDressUpGameFramework/game/cache
+
+# Compiled script files. These are important for saving, and so should
+# be preserved by developer and build systems after the game has been released.
+/RenpyDressUpGameFramework/game/**/*.rpyc
+/RenpyDressUpGameFramework/game/**/*.rpymc
+
+# Files Ren'Py can generate.
+/RenpyDressUpGameFramework/game/**/*.bak
+/RenpyDressUpGameFramework/game/**/*.new
+/RenpyDressUpGameFramework/game/**/*.old
+
+# Error, log, and output files.
+/RenpyDressUpGameFramework/errors.txt
+/RenpyDressUpGameFramework/files.txt
+/RenpyDressUpGameFramework/image_cache.txt
+/RenpyDressUpGameFramework/log.txt
+/RenpyDressUpGameFramework/save_dump.txt
+/RenpyDressUpGameFramework/traceback.txt
+
+# Launcher-generated files.
+/RenpyDressUpGameFramework/dialogue.tab
+/RenpyDressUpGameFramework/dialogue.txt
+/RenpyDressUpGameFramework/strings.json
