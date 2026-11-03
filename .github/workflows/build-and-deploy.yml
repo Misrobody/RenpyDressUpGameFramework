@@ -29,7 +29,8 @@ jobs:
           
           # Copy the repo into the SDK folder
           #cp -R /__w/*/* /renpy-*/
-          cp -R ${GITHUB_WORKSPACE}/* renpy-8.5.3-sdk/
+          #cp -R ${GITHUB_WORKSPACE}/* renpy-8.5.3-sdk/
+          rsync -av --exclude='renpy-8.5.3-sdk' ${GITHUB_WORKSPACE}/ renpy-8.5.3-sdk/
           
           # enter renpy dir
           #cd /renpy-*/
