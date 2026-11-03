@@ -5,8 +5,8 @@ A modular plug-and-play character creator and dress-up framework for Ren'Py, com
 Assets are loaded directly from the image set. After creating or modifying assets, run the metadata generator to automatically build the data required by the framework.
 
 <div>
-  <img src="screenshots/screenshot0003.png" width=500>
-  <img src="screenshots/screenshot0004.png" width=500>
+  <img src="screenshots/screenshot0003.png" width=520>
+  <img src="screenshots/screenshot0004.png" width=520>
 </div>
 
 ## Quick Start
