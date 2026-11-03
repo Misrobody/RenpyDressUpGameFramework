@@ -78,6 +78,13 @@ jobs:
 
           # build for Web PWA
           #./renpy.sh launcher web_build_cli ../${{github.event.repository.name}}/ --destination ${{github.event.repository.name}}_web
+
+          echo "Contents of builds:"
+          ls -lah
+          
+          echo "Zip files:"
+          find . -name "*.zip"
+
           
           ## push the builds to Itch
 
