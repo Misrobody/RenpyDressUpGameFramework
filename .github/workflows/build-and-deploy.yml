@@ -67,6 +67,8 @@ jobs:
           echo "Checking Butler version..."
           butler --version
 
+          mkdir -p builds
+
           # build the project
           ./renpy.sh launcher distribute ../${{ github.event.repository.name }}/ --destination builds
 
