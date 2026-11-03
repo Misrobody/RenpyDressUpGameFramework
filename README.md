@@ -1,41 +1,45 @@
 # Dress-Up Framework
 
-A modular plug and play character creator and dress-up framework for Ren'Py. Works both for web and desktop.
+A modular plug-and-play character creator and dress-up framework for Ren'Py, compatible with both web and desktop builds.
 
-The image assets are loaded directly from the image folder. After creating or modifying an image set, run the metadata generation script to automatically build the data required by the framework.
+Assets are loaded directly from the image set. After creating or modifying assets, run the metadata generator to automatically build the data required by the framework.
 
----
+## Asset Credits
 
-# Asset Credit
+- [Better Colorize for Ren'Py](https://feniksdev.itch.io/better-colorize-for-renpy) by Feniksdev
+- [Color Picker for Ren'Py](https://feniksdev.itch.io/color-picker-for-renpy) by Feniksdev
 
-[Better Colorize for Ren'py](https://feniksdev.itch.io/better-colorize-for-renpy) (Feniksdev)
+## How It Works
 
-[Color Picker for Ren'py](https://feniksdev.itch.io/color-picker-for-renpy) (Feniksdev)
+The framework automatically discovers clothes, hairstyles, facial features, accessories, and other doll layers from a structured image set.
 
----
+After updating your assets, run:
 
-# How It Works
+```bash
+python generate_metadata.py images/doll
+```
 
-The framework automatically discovers clothing, hairstyles, accessories, facial features, and other doll layers from a structured image set. Each category corresponds to a directory and contains one or more PNG images representing selectable items.
+The generator will:
 
-The metadata generation script automatically:
-- Resizes assets to the framework's required resolution.
-- Determines the doll canvas size.
-- Generates thumbnail crop data.
-- Counts available items.
-- Creates `doll_data.json`.
+- Resize assets to the framework resolution.
+- Detect doll dimensions.
+- Generate thumbnail crop data.
+- Count available items.
+- Create `doll_data.json`.
 
 No manual metadata editing is required.
 
-## Image Set Structure
+## Asset Structure
 
-Category folders must follow the format:
+### Folder Naming
+
+Category folders must follow this format:
 
 ```text
 <priority> - <group> - <category>
 ```
 
-Examples:
+Example:
 
 ```text
 0 - body - skin
@@ -49,22 +53,17 @@ Examples:
 ```
 
 Where:
+
 - `priority` determines render order.
-- `group` determines the top-level navigation group.
-- `category` determines the selectable category inside that group.
+- `group` determines the top-level navigation tab.
+- `category` determines the selectable category within that group.
 
-## Item Naming
+### File Naming
 
-Items inside a category folder must follow:
+Items inside a category folder must be named:
 
 ```text
 <category>_<index>.PNG
-```
-
-The category name must match the category portion of the folder name because the framework generates paths using:
-
-```python
-"{category}_{index}.PNG"
 ```
 
 Example:
@@ -77,15 +76,11 @@ shirt_1.PNG
 shirt_2.PNG
 ```
 
-## Render Priority
+The category name in the filename must match the category defined in the folder name.
 
-The numeric priority at the beginning of the folder name determines draw order. Lower priorities render first. Higher priorities render on top.
+## Navigation Structure
 
-Example:
-
-## Groups
-
-Groups are used for the first navigation row.
+Groups become the first navigation row.
 
 Example:
 
@@ -101,7 +96,7 @@ Example:
 70 - clothes - pants
 ```
 
-Creates:
+Produces:
 
 ```text
 Hair
@@ -109,11 +104,7 @@ Face
 Clothes
 ```
 
-in the group selector.
-
-## Categories
-
-Categories are used for the second navigation row.
+Categories become the second navigation row.
 
 Example:
 
@@ -124,108 +115,19 @@ Hair
 └── Eyebrows
 ```
 
-Each category manages:
+## Image Requirements
 
-- Current selected item
-- Default selection
-- Color customization
-- Thumbnail generation
-- Image loading
+- PNG only.
+- Thumbnail generation uses visible pixels only.
+- Assets are automatically resized by the generator.
+- Optimizing source images is recommended for web builds.
 
-# Image Requirements
+## Metadata File
 
-## Format
-
-Supported:
-
-```text
-PNG
-```
-
-Unsupported:
-
-```text
-JPG
-JPEG
-WEBP
-GIF
-```
-
-## Transparency
-
-Images should use transparency. Only visible pixels are used when generating thumbnail crop information.
-
-## Resolution
-
-Images do **not** need to be manually resized. The metadata generation script automatically scales every PNG to the framework's target height. Simply supply your source assets and run the generator. However, it is highly encouraged to optimize your exported images, if you plan on using the web build.
-
-# Metadata Generation
-
-After creating or modifying assets:
-
-```bash
-python generate_metadata.py <imgset_directory>
-```
-
-Example:
-
-```bash
-python generate_metadata.py images/doll
-```
-
----
-
-# What The Generator Does
-
-## 1. Resize Assets
-
-If the image set height is not the expected framework height, every PNG is automatically resized while maintaining aspect ratio.
-
-No manual resizing is required.
-
-## 2. Detect Doll Size
-
-The generator determines:
-
-```json
-{
-    "doll_width": 720,
-    "doll_height": 1080
-}
-```
-
-from the image set.
-
-## 3. Generate Thumbnail Crop Data
-
-For every PNG the generator:
-
-- Finds the visible bounding box.
-- Extracts the occupied image region.
-- Stores crop information.
-
-This is used to generate centered wardrobe thumbnails.
-
-## 4. Count Available Items
-
-The generator counts the number of PNGs present in every category folder.
-
-Example:
-
-```json
-{
-    "10 - hair - front_hair": 12,
-    "20 - face - eyes": 8,
-    "30 - clothes - shirts": 15
-}
-```
-
-## 5. Generate Metadata File
-
-The generator creates:
+The generator creates a single metadata file:
 
 ```text
 doll_data.json
 ```
 
-inside the image set root directory.
+inside the root of the image set directory.
