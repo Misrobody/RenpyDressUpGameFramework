@@ -17,6 +17,10 @@ jobs:
         with:
           version: "8.5.3"
           download_web: "yes"
+      - name: Locate RenPy
+        run: |
+          find . -name "renpy.sh"
+          find $HOME -name "renpy.sh" 2>/dev/null
       - name: Install Butler
         run: |
           wget https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default -O butler.zip
