@@ -68,10 +68,10 @@ jobs:
           butler --version
 
           # build the project
-          ./renpy.sh launcher distribute ${{ github.event.repository.name }}/ --destination builds
+          ./renpy.sh launcher distribute ../${{ github.event.repository.name }}/ --destination builds
 
           # build for Web PWA
-          ./renpy.sh launcher web_build_cli ${{github.event.repository.name}}/ --destination ${{github.event.repository.name}}_web
+          ./renpy.sh launcher web_build_cli ../${{github.event.repository.name}}/ --destination ${{github.event.repository.name}}_web
           
           ## push the builds to Itch
 
