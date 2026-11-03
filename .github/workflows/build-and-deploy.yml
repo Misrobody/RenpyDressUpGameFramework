@@ -82,11 +82,12 @@ jobs:
           ## push the builds to Itch
 
           # Step into the generated dir to find the web.zip for Butler
-          cd *-dists
-          butler push *.zip ${butler_user_slash_game}:web-${GITHUB_REF_NAME}
+          #cd *-dists
+          #butler push *.zip ${butler_user_slash_game}:web-${GITHUB_REF_NAME}
 
           # Step into the builds dir for the rest of the builds.
-          cd ../builds
+          #cd ../builds
+          cd builds
 
           # Make it easier to deal with the names by setting up a var
           export build_file_name=${RENPY_PROJECT_BUILD_NAME}-${RENPY_PROJECT_CONFIG_VERSION}
