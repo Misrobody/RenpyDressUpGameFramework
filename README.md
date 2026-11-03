@@ -1,4 +1,4 @@
-<img width="4032" height="882" alt="image" src="https://github.com/user-attachments/assets/4a44fe7d-deca-42fa-8eaa-bed9560f229c" /># Dress-Up Framework
+# Dress-Up Framework
 
 A modular plug-and-play character creator and dress-up framework for Ren'Py, compatible with both web and desktop builds.
 
