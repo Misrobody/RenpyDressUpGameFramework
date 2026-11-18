@@ -30,9 +30,6 @@ init python:
         xysize=(doll_width, doll_height)
     )
 
-    CROP_SIZE = 200
-
-
     ################################################################################
     # Category
     ################################################################################
@@ -64,7 +61,7 @@ init python:
             for active color channels.
             """
             self._selected_index = renpy.random.randint(self._base_index, self._item_count - 1)
-            self._color_manager.random_colors()
+            self.color_manager.random_colors()
 
         def __repr__(self):
             return self._name
@@ -73,7 +70,7 @@ init python:
             self._selected_index = self._base_index
 
         def reset_colors(self):
-            self._color_manager.reset_colors()
+            self.color_manager.reset_colors()
 
         def select(self, index):
             self._selected_index = index
@@ -88,7 +85,9 @@ init python:
 
         @property
         def color_manager(self):
-            return self._color_manager
+            if isinstance(self._color_manager, ColorManager):
+                return self._color_manager
+            return ColorManager()
 
         @property
         def priority(self):
@@ -123,8 +122,8 @@ init python:
             if index == NO_SELECTION:
                 return EMPTY_IMAGE
             return At(
-                f"images/doll/{self._asset_path}/{self.key}_{index}.PNG",
-                self._color_manager.get_rgb_transform()
+                f"{IMAGESET_PATH}/{self._asset_path}/{self.key}_{index}.PNG",
+                self.color_manager.get_rgb_transform()
             )
 
         def get_button_image(self, index):

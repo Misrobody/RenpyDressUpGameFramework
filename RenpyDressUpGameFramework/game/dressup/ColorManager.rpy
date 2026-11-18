@@ -1,6 +1,7 @@
 init -50 python:
+
     ################################################################################
-    # Constants
+    # Color Manager Constants
     ################################################################################
 
     DEFAULT_COLORS = [
@@ -16,12 +17,6 @@ init -50 python:
         "#d2996b", "#c68642", "#b3744a", "#a67c52", "#8d5524",
         "#7f4f24", "#6b4423", "#5c3b1e", "#4b2e1a"
     ]
-
-    PICKER_WIDTH = 655
-    PICKER_HEIGHT = 100
-    
-    # You can switch around the channels to switch around the order of colors 1, 2 and 3
-    CHANNELS = ("gray", "green", "blue", "red")
 
 
     ################################################################################
@@ -134,10 +129,15 @@ init -50 python:
     ################################################################################
 
     SKIN_MANAGER = ColorManager(
+        base_red="#e0ac69",
         base_green="#e0ac69",
+        base_blue="#e0ac69",
+        list_red=SKIN_COLORS,
         list_green=SKIN_COLORS,
-        active_blue=False,
-        active_red=False
+        list_blue=SKIN_COLORS,
+        active_red=("red"==CHANNELS[1]),
+        active_blue=("blue"==CHANNELS[1]),
+        active_green=("green"==CHANNELS[1])
     )
     NO_COLOR_MANAGER = ColorManager(
         active_blue=False,
@@ -158,3 +158,14 @@ init -50 python:
         active_green=False,
         active_blue=False
     )
+
+    DEFAULT_MANAGER = ColorManager()
+
+    MANAGER_CATALOGUE = {
+        "SKIN_MANAGER": SKIN_MANAGER,
+        "NO_COLOR_MANAGER": NO_COLOR_MANAGER,
+        "MOUTH_MANAGER": MOUTH_MANAGER,
+        "BG_MANAGER": BG_MANAGER,
+        "DEFAULT_MANAGER": DEFAULT_MANAGER
+    }
+

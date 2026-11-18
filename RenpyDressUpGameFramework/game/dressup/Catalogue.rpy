@@ -19,55 +19,6 @@ init python:
     from collections import defaultdict
 
     ################################################################################
-    # Defaults
-    ################################################################################
-
-    # Base skin layer. Also used as the default selected category.
-    SKIN_LAYER = "skin"
-
-    # Category selected when the catalogue is first opened.
-    DEFAULT_CATEGORY_KEY = SKIN_LAYER
-
-    # Group selected when the catalogue is first opened.
-    DEFAULT_GROUPS_KEY = "body"
-
-
-    ################################################################################
-    # Category Configuration
-    ################################################################################
-    #
-    # Per-category initialization settings.
-    #
-    # base_index:
-    # Default item selected when the category is initialized.
-    #
-    # manager:
-    # ColorManager controlling recolorable layers in this category.
-    #
-    # Categories omitted from this table use their default Category settings.
-
-    CATEGORY_CONFIG = {
-        "skin": {
-            "base_index": 0,
-            "manager": SKIN_MANAGER,
-        },
-        "eyebrows": {
-            "base_index": 0,
-            "manager": NO_COLOR_MANAGER,
-        },
-        "mouth": {
-            "base_index": 0,
-            "manager": MOUTH_MANAGER,
-        },
-        "eyes": {
-            "base_index": 0,
-        },
-        "background": {
-            "base_index": 0,
-        }
-    }
-
-    ################################################################################
     # Asset Discovery
     ################################################################################
     
@@ -83,7 +34,8 @@ init python:
         cats = {}
         subs = {}
         maps = defaultdict(list)
-        for root, dirs, files in os.walk(os.path.join(config.gamedir, "images", "doll")):
+        imgset_name = IMAGESET_PATH.split("/")[-1]
+        for root, dirs, files in os.walk(os.path.join(config.gamedir, "images", imgset_name)):
             for dirname in dirs:
                 infos = dirname.split(" - ")
                 if infos[1] not in subs:
@@ -135,7 +87,10 @@ init python:
                 if "base_index" in config:
                     category.set_base_index(config["base_index"])
                 if "manager" in config:
-                    category.set_color_manager(config["manager"])
+                    if isinstance(config["manager"], basestring) and config["manager"] != "":
+                        category.set_color_manager(MANAGER_CATALOGUE[config["manager"]])
+                    else:    
+                        category.set_color_manager(config["manager"])
                 
         def toggle_item(self, item_id):
             category = self.current_category.toggle(item_id)

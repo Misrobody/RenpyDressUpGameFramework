@@ -17,21 +17,28 @@ Copy the framework files (The `RenpyDressUpGameFramework` directory) into your R
 
 ### 2. Create an Image Set
 
-Replace the images inside the `images/doll` directory with your own assets using the naming conventions described in the Asset Structure section below.
+Replace the images inside the IMAGESET_PATH directory with your own assets using the naming conventions described in the Asset Structure section below.
 
 ### 3. Generate Metadata
 
 Run:
 
 ```bash
-python generate_metadata.py images/doll
+python generate_metadata.py IMAGESET_PATH
 ```
 
 This generates `doll_data.json` and all metadata required by the framework for your assets.
 
-### 4. Launch the Project
+
+### 4. Configure the image set layers
+
+Edit the doll_category_data.json to your liking. Detailed explainations are available in the dedicated section.
+
+
+### 5. Launch the Project
 
 Start your Ren'Py project. The framework will automatically discover available groups, categories, items, and thumbnail data.
+
 
 ## Requirements
 
@@ -93,6 +100,10 @@ Where:
 - `group` determines the top-level navigation tab.
 - `category` determines the selectable category within that group.
 
+No two category should have the same name. One of the two will be overidden.
+
+The framework imposes 5 different category names and fine different group names.
+
 ### File Naming
 
 Items inside a category folder must be named:
@@ -149,6 +160,44 @@ Hair
 ├── Back Hair
 └── Eyebrows
 ```
+
+## Configuration
+
+### Imageset Configuration
+
+The doll_category_data file contains the following parameters.
+
+#### Channels
+
+Defines the order in which the red, green, blue and gray channels are interpreted. The fixed framework mapping is:
+* unmutable color.
+* mutable color 1.
+* mutable color 2.
+* mutable color 3.
+
+#### Skin_layer
+
+The category key containing the skin.
+
+#### Default_category
+
+The default selected category key.
+
+#### Default_group
+
+The default selected category group.
+
+#### Category_config
+
+The config details for each category. A category key has two suppliable parameters:
+- base_index : if provided, the index of the preselected item.
+- manager : the color manager used by the category.
+
+Please see the ColorManager.rpy file for more details.
+
+### Framework Configuration
+
+All the configuration options with detailed explanations are available in (dressup_config.rpy)[RenpyDressUpGameFramework/game/dressup/dressup_config.rpy].
 
 ## Image Requirements
 

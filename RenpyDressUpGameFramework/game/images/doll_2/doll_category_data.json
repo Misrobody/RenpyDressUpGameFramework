@@ -1,0 +1,35 @@
+{
+    "globals": {
+        "channels": [
+            "gray",
+            "green",
+            "blue",
+            "red"
+        ],
+        "skin_layer": "skin",
+        "default_category": "skin",
+        "default_group": "body"
+    },
+    "category_config": {
+        "skin": {
+            "base_index": 0,
+            "manager": "SKIN_MANAGER"
+        },
+        "eyebrows": {
+            "base_index": 0,
+            "manager": ""
+        },
+        "mouth": {
+            "base_index": 0,
+            "manager": "MOUTH_MANAGER"
+        },
+        "eyes": {
+            "base_index": 0,
+            "manager": ""
+        },
+        "background": {
+            "base_index": 0,
+            "manager": ""
+        }
+    }
+}
