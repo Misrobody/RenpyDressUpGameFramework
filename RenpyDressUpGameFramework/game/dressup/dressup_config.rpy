@@ -6,7 +6,7 @@ init -200 python:
     ################################################################################
 
     # The path to the base directory of the doll imageset. Do not put trailing /
-    IMAGESET_PATH = "images/doll_2"
+    IMAGESET_PATH = "images/doll" # or "images/doll_2" to try out the other included example
 
 ################################################################################
 # UI Constants
@@ -15,32 +15,32 @@ init -200 python:
 ### Globals
 
 define catalogue = Catalogue()
+define DRESSUP_GAP = 40
+define CONTROL_PANEL_WIDTH = config.screen_width - doll_width - DRESSUP_GAP
 
 ### Item Grid
 
-init -200 python:
-    # Height and width of a single grid item.
-    CROP_SIZE = 200
-
 define ITEM_GRID_COLUMNS = 6
 define ITEM_GRID_ROWS = max((catalogue.current_stock() + 4) // ITEM_GRID_COLUMNS, 3)
-define ITEM_GRID_ITEM_PADDING = 8
-define ITEM_GRID_ITEM_SIZE = CROP_SIZE + ITEM_GRID_ITEM_PADDING
-define ITEM_GRID_SPACING = 10
-define ITEM_GRID_VIEWPORT_HEIGHT = 3 * ITEM_GRID_ITEM_SIZE + 2 * ITEM_GRID_SPACING
-define ITEM_GRID_VIEWPORT_WIDTH = ITEM_GRID_COLUMNS * ITEM_GRID_ITEM_SIZE + (ITEM_GRID_COLUMNS - 1) * ITEM_GRID_SPACING
+define ITEM_GRID_SPACING = 15
+define ITEM_GRID_ITEM_SIZE = int(round(
+    (CONTROL_PANEL_WIDTH - ITEM_GRID_SPACING * (ITEM_GRID_COLUMNS - 1))
+    / ITEM_GRID_COLUMNS
+))
+define ITEM_GRID_VIEWPORT_HEIGHT = 3 * ITEM_GRID_ITEM_SIZE + 2 * ITEM_GRID_SPACING 
+define ITEM_GRID_VIEWPORT_WIDTH = CONTROL_PANEL_WIDTH
 
 ### Category Bar
 
 define CATEGORY_BUTTON_BUTTON_SPACING = -5
 define CATEGORY_BUTTON_BAR_SPACING = -4
-define CATEGORY_BUTTON_GROUP_NUMBER = len(catalogue.group_keys)
-define CATEGORY_BUTTON_WIDTH = ITEM_GRID_VIEWPORT_WIDTH // CATEGORY_BUTTON_GROUP_NUMBER - CATEGORY_BUTTON_BUTTON_SPACING
 define CATEGOTY_BUTTON_HEIGHT = 55
+define CATEGORY_BAR_GROUP_BUTTON_WIDTH = CONTROL_PANEL_WIDTH // len(catalogue.group_keys) - CATEGORY_BUTTON_BUTTON_SPACING
+define CATEGORY_BAR_CATEGORY_BUTTON_WIDTH = CONTROL_PANEL_WIDTH // len(catalogue.current_categories()) - CATEGORY_BUTTON_BUTTON_SPACING
 
 ### Color Menu
 
-define COLOR_MENU_WIDTH = ITEM_GRID_VIEWPORT_WIDTH
+define COLOR_MENU_WIDTH = CONTROL_PANEL_WIDTH
 define COLOR_MENU_HEIGHT = 200
 
 ### Color Menu Toggle
@@ -85,4 +85,4 @@ define COLOR_PICKER_SPACING = 5
 ### Top Menu
 
 define TOP_MENU_HEIGHT = 40
-define TOP_MENU_WIDTH = ITEM_GRID_VIEWPORT_WIDTH + 2
+define TOP_MENU_WIDTH = CONTROL_PANEL_WIDTH + 2

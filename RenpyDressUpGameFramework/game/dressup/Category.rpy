@@ -85,9 +85,7 @@ init python:
 
         @property
         def color_manager(self):
-            if isinstance(self._color_manager, ColorManager):
-                return self._color_manager
-            return ColorManager()
+            return self._color_manager
 
         @property
         def priority(self):
@@ -147,7 +145,7 @@ init python:
             x0 = max(int(mean_x - dev_x/2), 0)
             y0 = max(int(mean_y - dev_y/2), 0)
             
-            scalef = min(CROP_SIZE / dev_x, CROP_SIZE / dev_y)
+            scalef = min(ITEM_GRID_ITEM_SIZE / dev_x, ITEM_GRID_ITEM_SIZE / dev_y)
             return  Transform(Crop((x0, y0, dev_x, dev_y), self.get_image(index)), zoom=scalef)
 
         # Setters

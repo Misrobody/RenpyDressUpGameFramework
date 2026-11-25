@@ -20,7 +20,6 @@
 #
 ################################################################################
 
-
 ################################################################################
 # Color Menu Screens
 ################################################################################
@@ -189,7 +188,7 @@ screen color_menu():
 
     frame:
         if not len(cm.get_active_color_lists()):
-            text "No colors"
+            text "No colors" style "color_menu_menu_frame_text" 
         else:
             hbox align(0, .5):
                 use color_menu_toggle()
@@ -288,20 +287,24 @@ style item_grid_button:
 screen category_bar():
     style_prefix "category_bar"
     vbox:              
-        hbox:            
+        hbox: # Groups          
             for k in catalogue.group_keys:
-                textbutton k.capitalize():              
+                button: 
+                    text k.capitalize() style "category_bar_button_text"
                     action Function(catalogue.set_current_group, k)
                     at hover_effect_groups
                     if catalogue.current_group_key == k:
                         at selected_effect
-        hbox:        
+                    style "category_bar_group_button"
+        hbox: # Categories      
             for v in catalogue.current_categories():
-                textbutton "[v]":            
+                button:  
+                    text "[v]" style "category_bar_button_text"        
                     action Function(catalogue.set_current_category, v.key)
                     at hover_effect_category
                     if catalogue._current_category_key == v.key:
                         at selected_effect
+                    style "category_bar_category_button"
 
 style category_bar_vbox:
     spacing CATEGORY_BUTTON_BAR_SPACING
@@ -309,16 +312,23 @@ style category_bar_vbox:
 style category_bar_hbox:
     spacing CATEGORY_BUTTON_BUTTON_SPACING
 
-style category_bar_button:
+style category_bar_group_button:
     background "gui_bg"
-    xsize CATEGORY_BUTTON_WIDTH
     ysize CATEGOTY_BUTTON_HEIGHT
+    xsize CATEGORY_BAR_GROUP_BUTTON_WIDTH
 
 style category_bar_button_text:
     size 30
     color gui.text_color
+    hover_color gui.selected_color
     align(.5, .5)
     text_align 0.5
+
+style category_bar_category_button:
+    background "gui_bg"
+    ysize CATEGOTY_BUTTON_HEIGHT
+    xsize CATEGORY_BAR_CATEGORY_BUTTON_WIDTH
+
 
 ## Top Menu ####################################################################
 ##

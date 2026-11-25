@@ -17,15 +17,15 @@
         },
         "eyebrows": {
             "base_index": 0,
-            "manager": "NO_COLOR_MANAGER"
+            "manager": "MONO_COLOR_MANAGER"
         },
         "mouth": {
             "base_index": 0,
-            "manager": "MOUTH_MANAGER"
+            "manager": "NO_COLOR_MANAGER"
         },
         "eyes": {
             "base_index": 0,
-            "manager": ""
+            "manager": "MONO_COLOR_MANAGER"
         },
         "nose": {
             "base_index": 0,
@@ -33,7 +33,23 @@
         },
         "background": {
             "base_index": 0,
+            "manager": "BG_MANAGER"
+        },
+        "underwear": {
+            "base_index": 0,
             "manager": ""
+        },
+        "bralettes": {
+            "base_index": 0,
+            "manager": ""
+        },
+        "back_hair": {
+            "base_index": 2,
+            "manager": "MONO_COLOR_MANAGER"
+        },
+        "front_hair": {
+            "base_index": 4,
+            "manager": "MONO_COLOR_MANAGER"
         }
     }
 }

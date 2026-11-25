@@ -148,8 +148,8 @@ init -50 python:
         active_blue=False,
         active_red=False,
         base_green=DEFAULT_COLORS[4],
-        active_green=True)
-
+        active_green=True
+    )
     BG_MANAGER = ColorManager(
         base_gray=DEFAULT_COLORS[9],
         active_gray=True,
@@ -157,6 +157,11 @@ init -50 python:
         active_red=True,
         active_green=False,
         active_blue=False
+    )
+    MONO_COLOR_MANAGER = ColorManager(
+        base_red=DEFAULT_COLORS[14],
+        base_green=DEFAULT_COLORS[14],
+        base_blue=DEFAULT_COLORS[14]
     )
 
     DEFAULT_MANAGER = ColorManager()
@@ -166,6 +171,7 @@ init -50 python:
         "NO_COLOR_MANAGER": NO_COLOR_MANAGER,
         "MOUTH_MANAGER": MOUTH_MANAGER,
         "BG_MANAGER": BG_MANAGER,
+        "MONO_COLOR_MANAGER": MONO_COLOR_MANAGER,
         "DEFAULT_MANAGER": DEFAULT_MANAGER
     }
 

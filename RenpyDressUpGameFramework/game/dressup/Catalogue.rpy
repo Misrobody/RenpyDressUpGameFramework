@@ -87,10 +87,11 @@ init python:
                 if "base_index" in config:
                     category.set_base_index(config["base_index"])
                 if "manager" in config:
-                    if isinstance(config["manager"], basestring) and config["manager"] != "":
-                        category.set_color_manager(MANAGER_CATALOGUE[config["manager"]])
-                    else:    
-                        category.set_color_manager(config["manager"])
+                    mgr = config["manager"]
+                    if mgr == "":
+                        pass
+                    else:
+                        category.set_color_manager(MANAGER_CATALOGUE[mgr])
                 
         def toggle_item(self, item_id):
             category = self.current_category.toggle(item_id)

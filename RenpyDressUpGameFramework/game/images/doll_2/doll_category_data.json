@@ -17,7 +17,7 @@
         },
         "eyebrows": {
             "base_index": 0,
-            "manager": ""
+            "manager": "NO_COLOR_MANAGER"
         },
         "mouth": {
             "base_index": 0,
@@ -29,6 +29,26 @@
         },
         "background": {
             "base_index": 0,
+            "manager": ""
+        },
+        "front_hair": {
+            "base_index": 7,
+            "manager": "MONO_COLOR_MANAGER"
+        },
+        "back_hair": {
+            "base_index": 0,
+            "manager": "MONO_COLOR_MANAGER"
+        },
+        "tops": {
+            "base_index": 1,
+            "manager": ""
+        },
+        "pants": {
+            "base_index": 4,
+            "manager": ""
+        },
+        "shoes": {
+            "base_index": 1,
             "manager": ""
         }
     }

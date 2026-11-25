@@ -209,7 +209,13 @@ All the configuration options with detailed explanations are available in (dress
 
 - [Better Colorize for Ren'Py](https://feniksdev.itch.io/better-colorize-for-renpy) by Feniksdev
 - [Color Picker for Ren'Py](https://feniksdev.itch.io/color-picker-for-renpy) by Feniksdev
-- [Demo Character Assets](https://bigeishe.itch.io/shugo-chara-dress-up) by Bigeishe
+- [Demo Character Assets 1](https://bigeishe.itch.io/shugo-chara-dress-up) by Bigeishe
+- [Demo Character Assets 2](https://bigeishe.itch.io/digital-doll) by Bigeishe
+
+## Games using the framework
+
+- [Shugo Chara Dress-up](https://bigeishe.itch.io/shugo-chara-dress-up) by Bigeishe
+- [Digital Doll](https://bigeishe.itch.io/digital-doll) by Bigeishe
 
 ## License
 
