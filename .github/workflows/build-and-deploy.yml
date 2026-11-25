@@ -4,6 +4,7 @@ on:
       - develop
       - preview
       - live
+      - main
       
 jobs:
   build:
